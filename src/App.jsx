@@ -1,3 +1,4 @@
+import ContactForm from "../components/contactForm"
 
 
 function App() {
@@ -5,8 +6,7 @@ function App() {
 
   return (
     
-    <h1>hello
-    </h1>
+    <ContactForm/>
   )
 }
 
