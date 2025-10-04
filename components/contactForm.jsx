@@ -3,22 +3,22 @@ function ContactForm (){
         
         <form id="form-contact">
             <label htmlFor="form-contact">Contact Us</label>
-            <fieldset>
+            <div className="name">
                 
             <label htmlFor="name-firstName">First Name</label>
-            <input type="text" name="firstName" id="name-firstName" required aria-describedby="name-firstName--required"/>
+            <input type="text" name="firstName" id="name-firstName" required aria-describedby="name-firstName--required" autoComplete="given-name"/>
             <p id="name-firstName--required">This field is required</p>
             
             <label htmlFor="name-lastName">Last Name</label>
-            <input type="text" name="lastName" id="name-lastName" required aria-describedby="name-lastName--required"/>
+            <input type="text" name="lastName" id="name-lastName" required aria-describedby="name-lastName--required" autoComplete="family-name"/>
             <p id="name-lastName--required">This field is required</p>
-            </fieldset>
-            <fieldset>
+            </div>
+            <div className="email">
                 <label htmlFor="email">Email Address</label>
                 <input type="email" name="email" id="email" required autocomplete="email" aria-invalid="true" aria-describedby="email-invalid email-required"/>
                 <p id="email-invalid">Please enter a valid email address</p>
                 <p id="email-required">This field is required</p>
-            </fieldset>
+            </div>
             <fieldset>
                 <legend>Query Type</legend>
                 <input type="radio" name="queryType" value="general" id="query-general" />
@@ -29,14 +29,17 @@ function ContactForm (){
                 
                 <p id="query-selected">Please select a query type</p>
             </fieldset>
-            <fieldset>
+            <div className="text-mes">
                 <label htmlFor="message">Message</label>
                 <textarea name="message" id="message" required aria-describedby="message-required"></textarea>
                 <p id="message-required">This field is required</p>
-            </fieldset>
+            </div>
+            <div className="accept">
+                
             <input type="checkbox" name="accept" id="accept" required aria-describedby="accept-required" />
             <label htmlFor="accept">I consent to being contacted by the team</label>
             <p id="accept-required">To submit this form, please consent to being contacted</p>
+            </div>
             
             <input type="submit"/>
         </form>
