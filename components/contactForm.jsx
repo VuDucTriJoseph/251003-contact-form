@@ -9,7 +9,8 @@ function ContactForm() {
     formState: { errors },
     reset,
   } = useForm();
-  const { isSubmmited, setIsSubmited } = useState(false);
+
+  const [isSubmmited, setIsSubmited] = useState(false);
 
   function onSubmit(data) {
     console.log(data);
@@ -23,6 +24,7 @@ function ContactForm() {
     //hide success mes after 3s
     setTimeout(() => setIsSubmited(false), 3000);
   }
+
   return (
     <>
       <form id="form-contact" onSubmit={handleSubmit(onSubmit)} noValidate>
@@ -40,7 +42,9 @@ function ContactForm() {
             {...register("firstName", { required: "This field is required" })}
           />
           {errors.firstName && (
-            <p id="name-firstName--required">{errors.firstName.message}</p>
+            <p className="arlet" id="name-firstName--required">
+              {errors.firstName.message}
+            </p>
           )}
 
           <label htmlFor="name-lastName">Last Name</label>
@@ -58,7 +62,9 @@ function ContactForm() {
             })}
           />
           {errors.lastName && (
-            <p id="name-lastName--required">{errors.lastName.message}</p>
+            <p className="arlet" id="name-lastName--required">
+              {errors.lastName.message}
+            </p>
           )}
         </div>
         <div className="email">
@@ -81,10 +87,14 @@ function ContactForm() {
             })}
           />
           {errors.email?.type === "pattern" && (
-            <p id="email-invalid">{errors.email.message}</p>
+            <p className="arlet" id="email-invalid">
+              {errors.email.message}
+            </p>
           )}
           {errors.email?.type === "required" && (
-            <p id="email-required">{errors.email.message}</p>
+            <p className="arlet" id="email-required">
+              {errors.email.message}
+            </p>
           )}
         </div>
         <fieldset
@@ -93,28 +103,33 @@ function ContactForm() {
           aria-invalid={errors.queryType ? "true" : "false"}
         >
           <legend>Query Type</legend>
-          <input
-            type="radio"
-            //   name="queryType"
-            value="general"
-            {...register("queryType", {
-              required: "Please select a query type",
-            })}
-            id="query-general"
-          />
-          <label htmlFor="query-general">General Enquiry</label>
-
-          <input
-            type="radio"
-            //   name="queryType"
-            value="support"
-            id="query-support"
-            {...register("queryType")}
-          />
-          <label htmlFor="query-support">Support Request</label>
+          <label className="tick-box">
+            <input
+              type="radio"
+              //   name="queryType"
+              value="general"
+              {...register("queryType", {
+                required: "Please select a query type",
+              })}
+              id="query-general"
+            />
+            General Enquiry
+          </label>
+          <label className="tick-box">
+            <input
+              type="radio"
+              //   name="queryType"
+              value="support"
+              id="query-support"
+              {...register("queryType")}
+            />
+            Support Request
+          </label>
 
           {errors.queryType && (
-            <p id="query-selected">{errors.queryType.message}</p>
+            <p className="arlet" id="query-selected">
+              {errors.queryType.message}
+            </p>
           )}
         </fieldset>
         <div className="text-mes">
@@ -126,35 +141,43 @@ function ContactForm() {
             aria-required="true"
             aria-invalid={errors.message ? "true" : "false"}
             aria-describedby="message-required"
-            {...register("message", { require: "This field is required" })}
+            {...register("message", { required: "This field is required" })}
           ></textarea>
           {errors.message && (
-            <p id="message-required">{errors.message.message}</p>
+            <p className="arlet" id="message-required">
+              {errors.message.message}
+            </p>
           )}
         </div>
         <div className="accept">
-          <input
-            type="checkbox"
-            //   name="accept"
-            id="accept"
-            value="true"
-            //   required
-            aria-required="true"
-            aria-invalid={errors.accept ? "true" : "false"}
-            aria-describedby="accept-required"
-            {...register("accept", {
-              require: "To submit this form, please consent to being contacted",
-            })}
-          />
-          <label htmlFor="accept">
+          <label className="tick-box">
+            <input
+              type="checkbox"
+              //   name="accept"
+              id="accept"
+              // value="true"
+              //   required
+              aria-required="true"
+              aria-invalid={errors.accept ? "true" : "false"}
+              aria-describedby="accept-required"
+              {...register("accept", {
+                required:
+                  "To submit this form, please consent to being contacted",
+              })}
+            />
             I consent to being contacted by the team
           </label>
-          {errors.accept && <p id="accept-required">{errors.accept.message}</p>}
+          {errors.accept && (
+            <p className="arlet" id="accept-required">
+              {errors.accept.message}
+            </p>
+          )}
         </div>
 
         <input type="submit" />
       </form>
       {isSubmmited && <Message />}
+      {/* <Message /> */}
     </>
   );
 }

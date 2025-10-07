@@ -1,7 +1,7 @@
 function Message() {
   return (
     <div className="message" role="status" aria-live="polite">
-      <h1>
+      <h3>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="20"
@@ -15,7 +15,7 @@ function Message() {
           />
         </svg>{" "}
         Message Sent!
-      </h1>
+      </h3>
       <p>Thanks for completing the form. We'll be in touch soon!</p>
     </div>
   );
